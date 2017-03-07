@@ -1,2 +1,2 @@
 run:
-	lua transform.lua
+	lua main.lua
