@@ -11,6 +11,7 @@ end
 
 function plot(s , c , x , y)
 	 local newy = y
+	 x = math.abs(x - XRES)
 	 --print(x,y)
 	 if(x >=0 and x<XRES and newy >=0 and newy<YRES) then
 	      s[x][newy].red = c.red
