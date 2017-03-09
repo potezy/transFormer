@@ -3,31 +3,32 @@ require 'draw'
 require 'display'
 require 'parser'
 
-pMatrix = {{},{},{},{}}
-
-function edgeMaker(matrix)
+eMatrix = {{},{},{},{}}
+tMatrix = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}}
+function edgeMaker()
 	 for x = 0, 499 do
 	     for y = 0, 499 do
-	     	 if((x-250)^2 == y) then addEdge(matrix, 250,250,0,x,y,0) end
+	     	 if((x-250)^2 == y) then addEdge(eMatrix, 250,250,0,x,y,0) end
        	     end
 	end
-	addEdge(matrix, 0,0,0,250,500,0)
-	addEdge(matrix, 250,250,0,0,500,0)
- 	addEdge(matrix,	250,250,0,500,0,0)
-	addEdge(matrix, 250,250,0,500,500,0)
+	addEdge(eMatrix, 0,0,0,250,500,0)
+	addEdge(eMatrix, 250,250,0,0,500,0)
+ 	addEdge(eMatrix,250,250,0,500,0,0)
+	addEdge(eMatrix, 250,250,0,500,500,0)
 
-	addEdge(matrix, 250,250,0,375,0,0)	
-	addEdge(matrix, 250,250,0,375,500,0)
-	addEdge(matrix, 250,250,0,500,375,0)
-	addEdge(matrix, 250,250,0,0,375,0)
+	addEdge(eMatrix, 250,250,0,375,0,0)	
+	addEdge(eMatrix, 250,250,0,375,500,0)
+	addEdge(eMatrix, 250,250,0,500,375,0)
+	addEdge(eMatrix, 250,250,0,0,375,0)
 end
 
 function main()
 	 clear_screen(board)
-	 edgeMaker(pMatrix)
-	 draw(board, pMatrix)
-	 save_ppm(board)
+	 --edgeMaker(eMatrix)
+	 parseFile("commands")
+	 draw(board, eMatrix)
+	 save(board, "line,ppm")
 	 os.execute("display line.ppm")
 end
 main()
-print("file is saved as line.ppm\n")
+--print("file is saved as line.ppm\n")

@@ -55,7 +55,7 @@ function draw_line(x0 , y0 , x1, y1 , c , s)
 			D = D + A
 		  end
 		  plot(s , c , x , y)
-	       else d = A - B/2
+	       else D = A - B/2
 	       	    while (x < x1) do
 		    	  plot(s,c,x,y)
 			  if (D<0) then

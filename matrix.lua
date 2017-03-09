@@ -1,6 +1,17 @@
 --here begins the functions for matrix things
 
 --prints the matrix
+function makeMatrix(x,y)
+	 local ret = {}
+	 for i = 1, x do
+	     ret[i] = {}
+	     for k = 1, y do
+	     	 ret[i][k] = 0
+	     end
+	  end
+	  return ret
+end
+
 
 function printMatrix(matrix)
 	 s = ""
@@ -59,6 +70,46 @@ function matrixMult(matrix1 , matrix2)
 	return tempMatrix	 
 end
 
+function translate(x,y,z)
+	 local temp = makeMatrix(4,4)
+	 identify(temp)
+	 temp[1][4] = x
+	 temp[2][4] = y
+	 temp[3][4] = z
+	 return temp
+end
+
+function rotate(axis,theta)
+	 temp = makeMatrix(4,4)
+	 local sin , cos = math.sin , math.cos
+	 identify(temp)
+	 if (axis == "x") then
+	    temp[2][2] = cos(theta)
+	    temp[2][3] = -1 * sin(theta)
+	    temp[3][2] = sin(theta)
+	    temp[3][3] = cos(theta)
+	 elseif(axis == "y") then
+	    temp[3][3] = cos(theta)
+	    temp[3][1] = -1 * sin(theta)
+	    temp[1][3] = sin(theta)
+	    temp[1][1] = cos(theta)
+	  else
+	    temp[1][1] = cos(theta)
+	    temp[1][2] = -1 * sin(theta)
+	    temp[2][1] = sin(theta)
+	    temp[2][2] = cos(theta)
+	  end
+	  return temp
+end
+
+function scale(x,y,z)
+	 temp = makeMatrix(4,4)
+	 identify(temp)
+	 temp[1][1] = x
+	 temp[2][2] = y
+	 temp[3][3] = z
+	 return temp
+end
 
 
 

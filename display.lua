@@ -11,6 +11,7 @@ end
 
 function plot(s , c , x , y)
 	 local newy = y
+	 --print(x,y)
 	 if(x >=0 and x<XRES and newy >=0 and newy<YRES) then
 	      s[x][newy].red = c.red
 	      s[x][newy].green = c.green
@@ -19,8 +20,8 @@ function plot(s , c , x , y)
 end
 
 --creates the ppm file
-function save_ppm(s)
-	 file = io.open("line.ppm" , "w")
+function save(s, name)
+	 file = io.open(name , "w")
 	 file:write("P3\n" , XRES , "\n" , YRES , "\n" , MAX_COLOR, "\n")
 	 for x = 0, XRES - 1 do
 	     for y = 0 , YRES - 1 do
