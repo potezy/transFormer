@@ -20,8 +20,9 @@ function plot(s , c , x , y)
 end
 
 --creates the ppm file
-function save(s, name)
-	 file = io.open(name , "w")
+function save(s)
+	 --print(name)
+	 file = io.open("line.ppm" , "w")
 	 file:write("P3\n" , XRES , "\n" , YRES , "\n" , MAX_COLOR, "\n")
 	 for x = 0, XRES - 1 do
 	     for y = 0 , YRES - 1 do
@@ -30,4 +31,5 @@ function save(s, name)
 	     file:write("\n")
 	 end 
 	 io.close(file)
+	 
 end

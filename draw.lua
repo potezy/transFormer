@@ -99,23 +99,23 @@ end
 
 
 
-function draw(board, pMatrix)
-	 for i = 1 , sizeOf(pMatrix[1]) , 2 do
-	     local x1 = pMatrix[1][i]
-	     local x2 = pMatrix[1][i+1]
-	     local y1 = pMatrix[2][i]
-	     local y2 = pMatrix[2][i+1]
+function draw(board, eMatrix)
+	 for i = 1 , sizeOf(eMatrix[1]) , 2 do
+	     local x1 = math.floor(eMatrix[1][i])
+	     local x2 = math.floor(eMatrix[1][i+1])
+	     local y1 = math.floor(eMatrix[2][i])
+	     local y2 = math.floor(eMatrix[2][i+1])
 	     --print(x1,y1,x2,y2)
 	     color = Color:new((x1+x2)%255, (y1+y2)%255, (x1+x2+y1+y2)%255)
 	     draw_line(x1,y1,x2,y2,color,board)
 	 end
 end
 
-function addPoint(pMatrix, x,y,z)
-	 table.insert(pMatrix[1],x) 	 
-	 table.insert(pMatrix[2],y)
-	 table.insert(pMatrix[3],z)
-	 table.insert(pMatrix[4],1)
+function addPoint(eMatrix, x,y,z)
+	 table.insert(eMatrix[1],x) 	 
+	 table.insert(eMatrix[2],y)
+	 table.insert(eMatrix[3],z)
+	 table.insert(eMatrix[4],1)
 end
 
 function addEdge(pMatrix, x1,y1,z1,x2,y2,z2)

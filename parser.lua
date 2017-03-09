@@ -16,38 +16,51 @@ function parseFile(f)
 	     table.insert(lines, line)
 	     s = s + 1
 	 end
-	 --print(s)
 	 for i = 1, s do
+	     local temp 
 	     ln = lines[i]:split(" ")
+	     --print(ln[1])
 	     --args = lines[i+1]:split(" ")
 	     if (ln[1] == "line") then
 	     	args = lines[i+1]:split(" ")
 		--print(args[1],args[2])
 	     	addEdge(eMatrix, tonumber(args[1]), tonumber(args[2]),tonumber(args[3]),tonumber(args[4]),tonumber(args[5]), tonumber(args[6]))
-		i = i +1
-	     elseif (ln[i] == "indent") then
+		--print("lines working")
+	     elseif (ln[1] == "ident") then
 	     	    identify(tMatrix)
-	     elseif (ln[i] == "scale") then
+		    --print("ident working")
+	     elseif (ln[1] == "scale") then
 	     	    args = lines[i+1]:split(" ")
-		    scale(args[1], args[2] , args[3])
-		    i = i+1
-	     elseif (ln[i] == "move") then 
+		    tMatrix = matrixMult(scale(args[1], args[2], args[3]), tMatrix)
+		    --print("scale working")
+	     elseif (ln[1] == "move") then 
 	     	    args = lines[i+1]:split(" ")
-	     	    translate(args[1], args[2],args[3])
-		    i = i+1
+	     	    tMatrix = matrixMult(translate(args[1], args[2],args[3]), tMatrix)
+		    --print("move working")
 	     elseif (ln[1] == "rotate") then
 	     	    args = lines[i+1]:split(" ")
-	     	    rotate(args[1], math.rad(args[2]))
-		    i = i +1
+	     	    tMatrix = matrixMult(rotate(args[1], math.rad(args[2])), tMatrix)
+		    --print("rotate moving")
              elseif (ln[1] == "apply") then
-	     	    matrixMult(tMatrix, eMatrix)
+	     	    --printMatrix(tMatrix)
+		    --printMatrix(eMatrix)
+	     	    eMatrix = matrixMult(tMatrix, eMatrix)
+		    --printMatrix(eMatrix)
+
 	     elseif (ln[1] == "save") then
-	     	    draw(board,eMatrix)
-		    save(board, args[1])
+	     	    args = lines[i+1]:split(" ")
+		    draw(board,eMatrix)
+		    save(board)
 		    n = args[1]
+		    os.execute("convert line.ppm " .. n) 
+		    --print("save working")
+		    --print(n)
 	     elseif (ln[1] == "display") then
-	     	    local s = "display " .. n 
-	     	    os.execute(s) 
+	     	    save(board)
+	     	    local a = "display " .. n 
+	     	    os.execute(a) 
+		    --print("display working")
+		    
 	     end
  	 end
 end
