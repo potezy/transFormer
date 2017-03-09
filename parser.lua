@@ -11,7 +11,7 @@ function string:split(sep) --credit to lua user manual
 function parseFile(f)
 	 local lines = {}
 	 local s = 0
-	 local n = "line.png"
+	 local n = "pic.png"
 	 for line in io.lines(f) do
 	     table.insert(lines, line)
 	     s = s + 1
@@ -57,7 +57,8 @@ function parseFile(f)
 		    --print(n)
 	     elseif (ln[1] == "display") then
 	     	    save(board)
-	     	    local a = "display " .. n 
+	     	    local a = "display line.ppm" 
+		    --print(a)
 	     	    os.execute(a) 
 		    --print("display working")
 		    

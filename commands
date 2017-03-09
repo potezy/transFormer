@@ -35,11 +35,11 @@ apply
 display
 ident
 rotate
-z 20
+z 80
 rotate
-x 20
+x 80
 rotate
-y 20
+y 120
 apply
 display
 ident
