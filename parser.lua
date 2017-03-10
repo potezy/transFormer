@@ -56,9 +56,10 @@ function parseFile(f)
 		    --print("save working")
 		    --print(n)
 	     elseif (ln[1] == "display") then
+	     	    draw(board, eMatrix)
 	     	    save(board)
 	     	    local a = "display line.ppm" 
-		    --print(a)
+		    print(a)
 	     	    os.execute(a) 
 		    --print("display working")
 		    
