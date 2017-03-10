@@ -1,53 +1,34 @@
-line
-0 0 0 100 0 0
-line
-100 0 0 100 100 0
-line
-100 100 0 0 100 0
-line
-0 100 0 0 0 0
-line
-0 0 100 100 0 100
-line
-100 0 100 100 100 100
-line
-100 100 100 0 100 100
-line
-0 100 100 0 0 100
-line
-0 0 0 0 0 100
-line
-0 100 0 0 100 100
-line
-100 100 0 100 100 100
-line
-100 0 0 100 0 100
-display
 ident
+line
+0 0 0 0 64 0
+line
+0 0 0 64 0 0
+line
+0 64 0 64 0 0
+line
+0 0 0 0 0 64
+line
+64 0 0 0 0 64
+line
+0 64 0 0 0 64
+display
 scale
 2 2 2
 apply
 display
 ident
 move
-100 100 0
+360 140 0
 apply
 display
 ident
 rotate
-z 80
+z 45
 rotate
-x 80
+y 45
 rotate
-y 120
+x 45
 apply
-display
-ident
-rotate
-y 20
-apply
-line
-0 0 0 200 200 0
 display
 save
 pic.png
