@@ -49,13 +49,13 @@ function parseFile(f)
 
 	     elseif (ln[1] == "save") then
 	     	    args = lines[i+1]:split(" ")
-		    draw(board,eMatrix)
 		    save(board)
 		    n = args[1]
 		    os.execute("convert line.ppm " .. n) 
 		    --print("save working")
 		    --print(n)
 	     elseif (ln[1] == "display") then
+	     	    clear_screen(board)
 	     	    draw(board, eMatrix)
 	     	    save(board)
 	     	    local a = "display line.ppm" 
